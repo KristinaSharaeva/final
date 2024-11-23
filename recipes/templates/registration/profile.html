@@ -1,0 +1,18 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+  <h2>Your Recipes</h2>
+  
+  <a href="{% url 'recipe_add' %}" class="btn btn-primary">Добавить рецепт</a>
+  
+  <ul>
+    {% for recipe in recipes %}
+      <li>
+        <a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a>
+        <a href="{% url 'recipe_edit' recipe.id %}">Редактировать</a>
+      </li>
+    {% empty %}
+      <p>У вас пусто ничего нет ни одного рецепта . нужно нажать добавить</p>
+    {% endfor %}
+  </ul>
+{% endblock %}
